@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TrainApp": {
+    "trainapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TrainApp:build:production"
+              "buildTarget": "trainapp:build:production"
             },
             "development": {
-              "buildTarget": "TrainApp:build:development"
+              "buildTarget": "trainapp:build:development"
             }
           },
           "defaultConfiguration": "development"
