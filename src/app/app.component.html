@@ -2,7 +2,7 @@
   <mat-drawer #drawer class="sidenav" mode="over">
 
   </mat-drawer>
-  <mat-toolbar> 
+  <mat-toolbar class="topbar"> 
     <button mat-icon-button (click)="drawer.toggle()" onclick="this.blur()">
       <mat-icon>
         menu
@@ -18,6 +18,11 @@
       Riccardo  
     </button>
   </mat-toolbar>
+  <nav>
+    <ul>
+      <li><a routerLink="/training" routerLinkActive="active" ariaCurrentWhenActive="page">Training</a></li>
+    </ul>
+  </nav>
   <router-outlet></router-outlet>
 </mat-drawer-container>
 
