@@ -38,3 +38,12 @@ $TrainApp-theme: mat.define-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-radio-persistent-ripple {
+  .mat-radio-button.cdk-focused:not(:hover) & {
+    opacity: 0 !important;
+  }
+  .mat-radio-button.cdk-focused:hover & {
+    opacity: 0.06 !important;
+  }
+}
