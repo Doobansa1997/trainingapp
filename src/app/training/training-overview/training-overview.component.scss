@@ -1,0 +1,29 @@
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 30px 0;
+}
+
+.flex-parent {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.long-and-truncated {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.training-card{
+    padding: 1rem;
+    cursor: pointer;
+}

@@ -1,33 +1,34 @@
 import { inject, Injectable } from '@angular/core';
-import { initializeApp } from '@angular/fire/app';
+import { FirebaseApp, initializeApp } from '@angular/fire/app';
 import { Auth } from '@angular/fire/auth';
 // Import the functions you need from the SDKs you need
 
-import { collection, collectionData, getDocs, getFirestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, CollectionReference, DocumentData, DocumentReference, Firestore, getDocs, getFirestore } from '@angular/fire/firestore';
+import { Training } from '../../models/training';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingService {
-  firebaseConfig = {
-    apiKey: "AIzaSyCUM_1hoXnXXwe4OjSGc20wkn8oRR9KMZ8",
-    authDomain: "trainapp-82662.firebaseapp.com",  
-    projectId: "trainapp-82662",  
-    storageBucket: "trainapp-82662.appspot.com",  
-    messagingSenderId: "269841665207",  
-    appId: "1:269841665207:web:16833c6e126042db3f1132",  
-    measurementId: "G-4FENN78V7C"  
-  };
     
   // Initialize Firebase
-  app = initializeApp(this.firebaseConfig);  
-  db = getFirestore(this.app)
-  constructor(private auth: Auth,) { }
+  db!: Firestore;
+  trainCollection!: CollectionReference<DocumentData, DocumentData>;
+  constructor(private auth: Auth, private firebaseApp: FirebaseApp) { 
+    console.log(firebaseApp);
+    this.db = getFirestore(firebaseApp);
+    this.trainCollection = collection(this.db, 'trainings')
+  }
 
   async testFirebase(){
-    const trainCollection = collection(this.db, 'training');
-    const itemsSnapshot = await getDocs(trainCollection);
+    const itemsSnapshot = await getDocs(this.trainCollection);
     const items = itemsSnapshot.docs.map(doc => doc.data())
     console.log(items)
+  }
+
+  async addTraining(training: Training){
+    addDoc(this.trainCollection, training).then((documentReference: DocumentReference) => {
+      console.log("New training added: id " + documentReference);
+    })
   }
 }
