@@ -1,0 +1,71 @@
+<h1>Nuovo allenamento</h1>
+<div class="training-content">
+    <form action="" [formGroup]="trainingForm" class="training-content">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome allenamento</mat-label>
+            <input matInput placeholder="Allenamento 1 ..." formControlName="name">
+        </mat-form-field>
+        <!--  <mat-form-field appearance="outline">
+            <mat-label>Data inizio allenamento</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+            <mat-label>Prossimo controllo</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field> -->
+        <mat-slide-toggle formControlName="isActive">Attiva allenamento</mat-slide-toggle>
+        
+        <h3>Giorni allenamento</h3>
+        <div *ngFor="let day of trainingDays.controls; let i = index">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome giorno</mat-label>
+                    <input matInput placeholder="Allenamento 1 ..." [formControlName]="">
+                </mat-form-field>
+    
+                <div>
+                    <h3>Esercizi</h3>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nome esercizio</mat-label>
+                        <input matInput placeholder="Allenamento 1 ...">
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Serie</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let item of [].constructor(100); let i = index"
+                                value="{{i+1}}">{{i+1}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ripetizioni</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let item of [].constructor(100); let i = index"
+                                value="{{i+1}}">{{i+1}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <button mat-flat-button>Aggiungi esercizio</button>
+            </div>
+        </div>
+        <div>
+            <button mat-stroked-button (click)="addTrainingDay()">Aggiungi giorno</button>
+        </div>
+    </form>
+
+
+
+    
+
+</div>
+<div>
+    <button mat-stroked-button>Annulla</button>
+    <button mat-flat-button (click)="onSubmit()">Salva</button>
+</div>
